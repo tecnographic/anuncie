@@ -37,12 +37,7 @@
 							<img src="{{ asset('images/bolivia.png') }}" style="display:block;margin:0 auto;">
 						</a>
 					</div>
-					@foreach($departamentos as $departamento)
-					<a href="{{ URL::to('publicaciones/departamentos/'.$departamento->id) }}">
-					<div class="bandera" id="{{ str_replace(' ','_',$departamento->nombre) }}">
-					</div>
-					</a>
-					@endforeach
+					
 				</div>
 			</div>
 		</div>

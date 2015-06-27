@@ -74,12 +74,10 @@ class HomeController extends BaseController {
 		->get();
 		$categories = Categorias::where('deleted','=',0)->where('tipo','=',1)->get();
 		$servicios  = Categorias::where('deleted','=',0)->where('tipo','=',2)->get();
-		$departamentos = Department::get();
 		return View::make('index')
 		->with('title',$title)
 		->with('lider',$lider)
 		->with('categories',$categories)
-		->with('departamentos',$departamentos)
 		->with('habitual',$habitual)
 		->with('casual',$casual)
 		->with('servicios',$servicios);
