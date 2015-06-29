@@ -17,7 +17,7 @@
 					<form methos="POST" action="{{ URL::to('recuperar/password') }}">
 						<p class="textoPromedio">Introduzca el email con el cual creó su cuenta</p>
 						<input class="form-control emailForgot" name="email" placeholder="Email">
-						<button class="btn btn-success envForgot" style="margin-top:2em;">Enviar</button>	
+						<button class="btn btn-success envForgot" style="margin-top:2em;">Enviar</button>
 					</form>
 				</div>
 		</div>
@@ -27,7 +27,7 @@
 <div class="container contenedorUnico">
 	<div class="row">
 		<div class="col-xs-12">
-			
+
 			<div class="contenedorCentrado contAnaranjado" style="margin-top:2em;">
 				<form action="{{ URL::to('inicio/login/auth') }}" method="POST">
 					@if (Session::has('error'))
@@ -56,6 +56,16 @@
 						<input type="checkbox" name="remember">
 					</div>
 					<div class="col-xs-12">
+						<p class="textoPromedio">Tambien podra iniciar sesión mediante:</p>
+						<div class="fb-login-button" data-max-rows="1" data-size="large" data-show-faces="true" data-auto-logout-link="false"></div>
+						<div id="fb-root"></div>
+						<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+						</fb:login-button>
+
+						<div id="status">
+						</div>
+					</div>
+					<div class="col-xs-12">
 						<input type="submit" name="enviar" value="Enviar" class="btn btn-primary">
 					</div>
 				</form>
@@ -63,6 +73,11 @@
 			</div>
 		</div>
 	</div>
-	
+
 </div>
+@stop
+
+@section('postscript')
+{{ HTML::script('js/facebook-login.js') }}
+
 @stop
