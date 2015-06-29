@@ -19,7 +19,6 @@
 		{{ HTML::style('css/owl.carousel.css') }}
 		{{ HTML::style('css/owl.theme.default.css') }}
 		{{ HTML::style('//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css') }}
-		<script src='https://www.google.com/recaptcha/api.js'></script>
 	</head>
 	<body>
 		<!--[if lt IE 7]>
@@ -32,7 +31,7 @@
 						<img src="{{ asset('images/logo.png') }}" class="logo">
 					</a>
 					<img src="{{ asset('images/logo-02.png') }}" class="logo logo2">
-					@if($title != "ffasil.com tu tienda virtual creada por bolivianos para bolivianos")
+					@if($title != "anuncie24.com tu tienda virtual creada por bolivianos para bolivianos")
 					<nav class="navbar navbar-default">
 						<div class="container-fluid">
 							<!-- Brand and toggle get grouped for better mobile display -->
@@ -48,17 +47,17 @@
 								<ul class="navbar-nav redes2" style="float:right;">
 
 									<li>
-										<a target="_blank" href="https://twitter.com/FFASILSRL">
+										<a target="_blank" href="https://twitter.com/anuncie24SRL">
 											<i class="fa fa-twitter menu-icon" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Twitter"></i>
 										</a>
 									</li>
 									<li>
-										<a target="_blank" href="https://www.facebook.com/pages/Ffasil/1044665552215357?fref=ts">
+										<a target="_blank" href="https://www.facebook.com/pages/anuncie24/1044665552215357?fref=ts">
 											<i class="fa fa-facebook menu-icon" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Facebook"></i>
 										</a>
 									</li>
 									<li>
-										<a target="_blank" href="https://i.instagram.com/ffasilsrl/">
+										<a target="_blank" href="https://i.instagram.com/anuncie24srl/">
 											<i class="fa fa-instagram menu-icon" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Instagram"></i>
 
 										</a>
@@ -70,17 +69,17 @@
 								<ul class="navbar-nav redes" style="float:right;">
 
 									<li>
-										<a target="_blank" href="https://twitter.com/FFASILSRL">
+										<a target="_blank" href="https://twitter.com/anuncie24SRL">
 											<i class="fa fa-twitter menu-icon" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Twitter"></i>
 										</a>
 									</li>
 									<li>
-										<a target="_blank" href="https://www.facebook.com/pages/Ffasil/1044665552215357?fref=ts">
+										<a target="_blank" href="https://www.facebook.com/pages/anuncie24/1044665552215357?fref=ts">
 											<i class="fa fa-facebook menu-icon" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Facebook"></i>
 										</a>
 									</li>
 									<li>
-										<a target="_blank" href="https://i.instagram.com/ffasilsrl/">
+										<a target="_blank" href="https://i.instagram.com/anuncie24srl/">
 											<i class="fa fa-instagram menu-icon" role="button" data-toggle="popover" data-trigger="hover" data-placement="bottom" data-content="Instagram"></i>
 
 										</a>
@@ -163,7 +162,7 @@ margin-top: 0.5em;display:inline-block;">
  Mis ventas
 													</a>
 												</li>
-												
+
 												<li class="divider"></li>
 												<li>
 													<a href="{{ URL::to('usuario/mi-reputacion') }}">
@@ -210,8 +209,8 @@ margin-top: 0.5em;display:inline-block;">
 																Precios
 															</a>
 														</li>
-														
-									
+
+
 													</ul>
 												</li>
 												<li class="showMovil">
@@ -258,9 +257,9 @@ margin-top: 0.5em;display:inline-block;">
 														</li>
 													</ul>
 												</li>
-												
-													
-												
+
+
+
 												@endif
 												<li>
 													<a href="{{ URL::to('usuario/cambiar-clave') }}"><i class="fa fa-exchange"></i>
@@ -275,16 +274,16 @@ margin-top: 0.5em;display:inline-block;">
 											</a>
 										</li>
 									@endif
-									
+
 								</ul>
-								
+
 								</div><!-- /.navbar-collapse -->
-								
+
 							</div><!-- /.container-fluid -->
 					</nav>
 					@else
 					<ul class="mainMenu nav navbar-nav menuFront">
-						<li><a href="{{ URL::to('mision-y-vision') }}" class="btn log"><strong>¿Qué es ffasil.com?</strong></a></li>
+						<li><a href="{{ URL::to('mision-y-vision') }}" class="btn log"><strong>¿Qué es anuncie24.com?</strong></a></li>
 						<li><a href="{{ URL::to('inicio') }}" class="btn log"><strong>Ingresar</strong></a></li>
 					</ul>
 					@endif
@@ -295,7 +294,7 @@ margin-top: 0.5em;display:inline-block;">
 		<div class="row" style="margin-right:0px;">
 			<footer>
 				<div class="panel-footer col-xs-12">
-					<p class="footerText textoPromedio"><strong>ffasil.com</strong> S.R.L. Todos los derechos reservados &copy 2015| <a href="{{ URL::to('inicio/terminos-y-condiciones') }}">Términos y condiciones de uso</a> | <a href="{{ URL::to('inicio/politica-de-privacidad') }}">Política de privacidad</a></p>
+					<p class="footerText textoPromedio"><strong>anuncie24.com</strong> S.R.L. Todos los derechos reservados &copy 2015| <a href="{{ URL::to('inicio/terminos-y-condiciones') }}">Términos y condiciones de uso</a> | <a href="{{ URL::to('inicio/politica-de-privacidad') }}">Política de privacidad</a></p>
 				</div>
 			</footer>
 		</div>
@@ -321,7 +320,7 @@ margin-top: 0.5em;display:inline-block;">
           ga('send', 'pageview');
 
         </script>
-       
+
        <script type="text/javascript">
 
        $( "#fechIni" ).datepicker({

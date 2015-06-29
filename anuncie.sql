@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 5.6.23, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `anuncie` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `anuncie`;
+-- MySQL dump 10.13  Distrib 5.5.43, for debian-linux-gnu (x86_64)
 --
--- Host: 127.0.0.1    Database: tienda
+-- Host: 127.0.0.1    Database: anuncie
 -- ------------------------------------------------------
--- Server version	5.5.32
+-- Server version	5.5.39
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -34,6 +36,15 @@ CREATE TABLE `bancos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `bancos`
+--
+
+LOCK TABLES `bancos` WRITE;
+/*!40000 ALTER TABLE `bancos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `bancos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `categoria`
 --
 
@@ -51,6 +62,15 @@ CREATE TABLE `categoria` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `categoria`
+--
+
+LOCK TABLES `categoria` WRITE;
+/*!40000 ALTER TABLE `categoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `categoria` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `comentario`
@@ -73,6 +93,15 @@ CREATE TABLE `comentario` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `comentario`
+--
+
+LOCK TABLES `comentario` WRITE;
+/*!40000 ALTER TABLE `comentario` DISABLE KEYS */;
+/*!40000 ALTER TABLE `comentario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `compras`
 --
 
@@ -93,6 +122,43 @@ CREATE TABLE `compras` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `compras`
+--
+
+LOCK TABLES `compras` WRITE;
+/*!40000 ALTER TABLE `compras` DISABLE KEYS */;
+/*!40000 ALTER TABLE `compras` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `images`
+--
+
+DROP TABLE IF EXISTS `images`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `images` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pub_id` int(11) DEFAULT NULL,
+  `image` varchar(100) DEFAULT NULL,
+  `deleted` int(11) DEFAULT '0',
+  `pos` int(11) DEFAULT NULL,
+  `created_at` date DEFAULT NULL,
+  `updated_at` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `images`
+--
+
+LOCK TABLES `images` WRITE;
+/*!40000 ALTER TABLE `images` DISABLE KEYS */;
+/*!40000 ALTER TABLE `images` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `lista`
 --
 
@@ -111,6 +177,15 @@ CREATE TABLE `lista` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `lista`
+--
+
+LOCK TABLES `lista` WRITE;
+/*!40000 ALTER TABLE `lista` DISABLE KEYS */;
+/*!40000 ALTER TABLE `lista` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `marcas`
 --
 
@@ -124,6 +199,15 @@ CREATE TABLE `marcas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `marcas`
+--
+
+LOCK TABLES `marcas` WRITE;
+/*!40000 ALTER TABLE `marcas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `marcas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `modelo`
@@ -144,6 +228,15 @@ CREATE TABLE `modelo` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `modelo`
+--
+
+LOCK TABLES `modelo` WRITE;
+/*!40000 ALTER TABLE `modelo` DISABLE KEYS */;
+/*!40000 ALTER TABLE `modelo` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `numcuentas`
 --
 
@@ -160,6 +253,15 @@ CREATE TABLE `numcuentas` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `numcuentas`
+--
+
+LOCK TABLES `numcuentas` WRITE;
+/*!40000 ALTER TABLE `numcuentas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `numcuentas` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `pagos`
@@ -183,6 +285,15 @@ CREATE TABLE `pagos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `pagos`
+--
+
+LOCK TABLES `pagos` WRITE;
+/*!40000 ALTER TABLE `pagos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `pagos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `precios`
 --
 
@@ -201,6 +312,15 @@ CREATE TABLE `precios` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `precios`
+--
+
+LOCK TABLES `precios` WRITE;
+/*!40000 ALTER TABLE `precios` DISABLE KEYS */;
+/*!40000 ALTER TABLE `precios` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `publicaciones`
 --
 
@@ -211,27 +331,12 @@ CREATE TABLE `publicaciones` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `tipo` varchar(8) NOT NULL,
-  `ubicacion` varchar(50) NOT NULL,
-  `departamento` int(11) NOT NULL,
   `categoria` varchar(50) NOT NULL,
-  `titulo` varchar(100) NOT NULL,
-  `ciudad` varchar(50) NOT NULL,
-  `pag_web` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `typeCat` varchar(255) NOT NULL,
-  `marca_id` int(11) NOT NULL,
-  `modelo_id` int(11) NOT NULL,
-  `anio` varchar(4) NOT NULL,
+  `title` varchar(100) NOT NULL,
+  `city` varchar(50) NOT NULL,
   `precio` int(11) NOT NULL,
-  `kilometraje` int(11) NOT NULL,
-  `cilindraje` varchar(20) NOT NULL,
-  `transmision` varchar(20) NOT NULL,
-  `combustible` varchar(20) NOT NULL,
-  `documentos` varchar(20) NOT NULL,
-  `traccion` varchar(20) NOT NULL,
   `moneda` varchar(10) NOT NULL,
-  `extension` varchar(100) NOT NULL,
   `descripcion` longtext CHARACTER SET utf8 NOT NULL,
-  `transaccion` varchar(50) NOT NULL,
   `fechRepub` date NOT NULL,
   `duracion` int(11) NOT NULL,
   `duracionNormal` int(11) NOT NULL,
@@ -247,20 +352,20 @@ CREATE TABLE `publicaciones` (
   `lastname` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `pag_web_hab` varchar(255) NOT NULL,
-  `img_1` varchar(255) NOT NULL,
-  `img_2` varchar(255) NOT NULL,
-  `img_3` varchar(255) NOT NULL,
-  `img_4` varchar(255) NOT NULL,
-  `img_5` varchar(255) NOT NULL,
-  `img_6` varchar(255) NOT NULL,
-  `img_7` varchar(255) NOT NULL,
-  `img_8` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `publicaciones`
+--
+
+LOCK TABLES `publicaciones` WRITE;
+/*!40000 ALTER TABLE `publicaciones` DISABLE KEYS */;
+/*!40000 ALTER TABLE `publicaciones` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `respuestas`
@@ -283,6 +388,15 @@ CREATE TABLE `respuestas` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `respuestas`
+--
+
+LOCK TABLES `respuestas` WRITE;
+/*!40000 ALTER TABLE `respuestas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `respuestas` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `subcategoria`
 --
 
@@ -301,6 +415,15 @@ CREATE TABLE `subcategoria` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `subcategoria`
+--
+
+LOCK TABLES `subcategoria` WRITE;
+/*!40000 ALTER TABLE `subcategoria` DISABLE KEYS */;
+/*!40000 ALTER TABLE `subcategoria` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `textos`
 --
 
@@ -317,6 +440,15 @@ CREATE TABLE `textos` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `textos`
+--
+
+LOCK TABLES `textos` WRITE;
+/*!40000 ALTER TABLE `textos` DISABLE KEYS */;
+/*!40000 ALTER TABLE `textos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `usuario`
 --
 
@@ -328,21 +460,6 @@ CREATE TABLE `usuario` (
   `username` varchar(16) CHARACTER SET utf8 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL,
   `email` varchar(50) CHARACTER SET utf8 NOT NULL,
-  `name` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `lastname` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `id_carnet` varchar(11) NOT NULL,
-  `nombEmp` varchar(255) NOT NULL,
-  `nit` varchar(15) NOT NULL,
-  `state` varchar(20) CHARACTER SET utf8 NOT NULL,
-  `phone` varchar(20) NOT NULL,
-  `pag_web` varchar(100) NOT NULL,
-  `postal_cod` int(11) NOT NULL,
-  `dir` varchar(255) NOT NULL,
-  `pais` varchar(50) NOT NULL,
-  `reputation` int(11) NOT NULL,
-  `votes` int(11) NOT NULL,
-  `register_cod` varchar(255) NOT NULL,
-  `register_cod_active` int(11) NOT NULL DEFAULT '1',
   `user_suspended` int(11) NOT NULL DEFAULT '0',
   `user_deleted` int(11) NOT NULL DEFAULT '0',
   `remember_token` varchar(100) NOT NULL,
@@ -352,8 +469,18 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `user` (`username`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=20990986 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20990987 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (20990986,'carlucho','$2y$10$PxxW8jXfOWl2DsL8VZ5vz.9rJqnuHPeaCTi35W30QgolfK4tKGtZW','shenlong_12@hotmail.com',0,0,'epgYUkiCtUmeunE92n5EBlhBtsjfGDMzpqDz4b7nw0AxLT9iRh4NiOfFxgam','Usuario','2015-06-29','2015-06-29');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -364,4 +491,4 @@ CREATE TABLE `usuario` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2015-06-25 16:07:47
+-- Dump completed on 2015-06-29 17:03:28
