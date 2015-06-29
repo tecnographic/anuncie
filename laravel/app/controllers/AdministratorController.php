@@ -71,10 +71,10 @@ class AdministratorController extends BaseController {
 			'publicacion' => $titulo,
 			'creadoPor'=> $admin
 		);
-		$to_Email = 'ffasilsrl@gmail.com';
+		$to_Email = 'anuncie24srl@gmail.com';
 		Mail::send('emails.aprvPub', $data, function($message) use ($titulo,$admin,$to_Email,$subject)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 		$publicacion->motivo = "";
 		if ($publicacion->save()) {
@@ -199,12 +199,12 @@ class AdministratorController extends BaseController {
 	}
 	public function getPublication()
 	{
-		$title = "Administración de publicacione | ffasil.com";
+		$title = "Administración de publicacione | anuncie24.com";
 		return View::make('admin.publications')->with('title',$title);	
 	}
 	public function getPublicationType($type)
 	{
-		$title = "Administración de publicaciones LÍDER | ffasil.com";
+		$title = "Administración de publicaciones LÍDER | anuncie24.com";
 		$publicaciones = "";
 		if ($type == 'lider') {
 			$pub = Publicaciones::leftJoin('categoria','categoria.id','=','publicaciones.categoria')
@@ -297,7 +297,7 @@ class AdministratorController extends BaseController {
 	}
 	public function getNewAdmin()
 	{
-		$title = "Crear nuevo administrador | ffasil.com";
+		$title = "Crear nuevo administrador | anuncie24.com";
 		return View::make('admin.createUser')->with('title',$title);
 	}
 	public function postNewAdmin()
@@ -331,7 +331,7 @@ class AdministratorController extends BaseController {
 			$user = new User;
 			$user->username = $input['adminUser'];
 			$user->password = Hash::make($input['pass']);
-			$user->email    = $input['adminUser'].'@ffasil.com';
+			$user->email    = $input['adminUser'].'@anuncie24.com';
 			$user->role     = 'Administrador';
 
 			if ($user->save()) {
@@ -340,8 +340,8 @@ class AdministratorController extends BaseController {
 					'createBy' => Auth::user()['username']
 				);
 				Mail::send('emails.newAdmin', $data, function ($message) use ($input){
-					    $message->subject('Correo creacion de usuario ffasil.com');
-					    $message->to('someemail@ffasil.com');
+					    $message->subject('Correo creacion de usuario anuncie24.com');
+					    $message->to('someemail@anuncie24.com');
 					});
 				Session::flash('success', 'El usuario fue creado satisfactoriamente');
 				return Redirect::to('administrador/crear-nuevo');
@@ -354,7 +354,7 @@ class AdministratorController extends BaseController {
 	}
 	public function getUserElim()
 	{
-		$title ="Eliminar usuarios | ffasil.com";
+		$title ="Eliminar usuarios | anuncie24.com";
 		$user = User::leftJoin('departamento','usuario.state','=','departamento.id')
 		->where('usuario.user_deleted','=',0)
 		->where('usuario.role','=','Usuario')
@@ -413,11 +413,11 @@ class AdministratorController extends BaseController {
 				'creadoPor'=> $admin
 			);
 
-			$to_Email = 'ffasilsrl@gmail.com';
+			$to_Email = 'anuncie24srl@gmail.com';
 
 			Mail::send('emails.elimUser', $data, function($message) use ($admin,$to_Email,$subject,$username)
 			{
-				$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+				$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 			});
 			$user->save();
 
@@ -456,7 +456,7 @@ class AdministratorController extends BaseController {
 		$to_Email = $user->email;
 		Mail::send('emails.elimPubUser', $data, function($message) use ($titulo,$to_Email,$subject)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 
 		$pub->deleted = 1;
@@ -470,17 +470,17 @@ class AdministratorController extends BaseController {
 			'publicacion' => $titulo,
 			'creadoPor'=> $admin
 		);
-		$to_Email = 'ffasilsrl@gmail.com';
+		$to_Email = 'anuncie24srl@gmail.com';
 		Mail::send('emails.elmPub', $data, function($message) use ($titulo,$admin,$to_Email,$subject)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 		return Response::json(array('type' => 'success','msg' => 'Publicación eliminada satisfactoriamente. Hemos enviado un email al correo.'));
 	}
 	public function getModifyPub()
 	{
 		$textos = Textos::all();
-		$title = "Cambiar texto | ffasil.com";
+		$title = "Cambiar texto | anuncie24.com";
 		return View::make('admin.modifyText')
 		->with('title',$title)
 		->with('textos',$textos);
@@ -523,17 +523,17 @@ class AdministratorController extends BaseController {
 			'subject' => $subject,
 			'creadoPor'=> $admin
 		);
-		$to_Email = 'ffasilsrl@gmail.com';
+		$to_Email = 'anuncie24srl@gmail.com';
 		Mail::send('emails.mdfText', $data, function($message) use ($admin,$to_Email,$subject)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 		Session::flash('success', 'Textos guardados sactisfactoriamente. Se ha enviado un correo al administrador.');
 		return Redirect::to('administrador/modificar-publicaciones');
 	}
 	public function getModifyPrice()
 	{
-		$title = 'Cambiar precios | ffasil.com';
+		$title = 'Cambiar precios | anuncie24.com';
 		$princ = Precios::where('pub_type_id','=',1)->get();
 		$cat   = Precios::where('pub_type_id','=',2)->get();
 		return View::make('admin.modifyPrice')
@@ -580,10 +580,10 @@ class AdministratorController extends BaseController {
 			'subject' => $subject,
 			'creadoPor'=> $admin
 		);
-		$to_Email = 'ffasilsrl@gmail.com';
+		$to_Email = 'anuncie24srl@gmail.com';
 		Mail::send('emails.mdfPrice', $data, function($message) use ($admin,$to_Email,$subject)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 		Session::flash('success', 'Precios cambiados correctamentes');
 		return Redirect::to('administrador/modificar-precios');
@@ -591,7 +591,7 @@ class AdministratorController extends BaseController {
 
 	public function getAddAccount()
 	{
-		$title = "Nueva cuenta | ffasil.com";
+		$title = "Nueva cuenta | anuncie24.com";
 		$bancos = Bancos::all();
 		return View::make('admin.addBank')
 		->with('title',$title)
@@ -630,10 +630,10 @@ class AdministratorController extends BaseController {
 			'num' 	  => $num,
 			'creadoPor'=> $admin
 		);
-		$to_Email = 'ffasilsrl@gmail.com';
+		$to_Email = 'anuncie24srl@gmail.com';
 		Mail::send('emails.newAcc', $data, function($message) use ($admin,$to_Email,$subject,$num)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 		if ($numCuenta->save()) {
 			Session::flash('success', 'Número de cuenta creado satisfactoriamente.');
@@ -646,7 +646,7 @@ class AdministratorController extends BaseController {
 	}
 	public function getNewBank()
 	{
-		$title = "Nuevo banco | ffasil.com";
+		$title = "Nuevo banco | anuncie24.com";
 		return View::make('admin.newBank')
 		->with('title',$title);
 	}
@@ -730,7 +730,7 @@ class AdministratorController extends BaseController {
 	}
 	public function getEditBanks()
 	{
-		$title = 'Editar bancos | ffasil.com';
+		$title = 'Editar bancos | anuncie24.com';
 		$bancos= Bancos::where('deleted','=',0)->get();
 		return View::make('admin.editBank')
 		->with('title',$title)
@@ -738,7 +738,7 @@ class AdministratorController extends BaseController {
 	}
 	public function getEditBankSelf($id)
 	{
-		$title = 'Modificar banco | ffasil.com';
+		$title = 'Modificar banco | anuncie24.com';
 		$bancos = Bancos::find($id);
 		return View::make('admin.newBank')
 		->with('title',$title)

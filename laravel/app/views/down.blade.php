@@ -1,8 +1,8 @@
 <html>
 	<head>
-		<title>ffasil.com | hecho por bolivianos para bolivianos</title>
+		<title>anuncie24.com | hecho por bolivianos para bolivianos</title>
 		<meta name="keywords" content="publicidad,publicidad online, tienda online, bolivia, comprar en bolivia, publicidad en bolivia">
-		<meta name="description" content="ffasil.com es una tienda virtual donde podras publicar tus articulos ademas de hacerle publicidad a tu empresa gracias a nuestro sistema de publicaciones, ven y haz crecer a tu empresa con ffasil.com">
+		<meta name="description" content="anuncie24.com es una tienda virtual donde podras publicar tus articulos ademas de hacerle publicidad a tu empresa gracias a nuestro sistema de publicaciones, ven y haz crecer a tu empresa con anuncie24.com">
 		<style type="text/css">
 			body,html
 			{

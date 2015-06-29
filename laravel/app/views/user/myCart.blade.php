@@ -1,11 +1,11 @@
-@extends('main')
+@extends('layouts.main')
 
 @section('content')
 
 <div class="container contenedorUnico">
 	<div class="row">
 		<div class="col-xs-12">
-				<legend>Sistema de reputación de ffasil.com</legend>
+				<legend>Sistema de reputación de anuncie24.com</legend>
 				<p class=textoPromedio>Una vez que hayas realizado tu compra, podrás valorar al vendedor según tus experiencias, pasadas las 48 horas. </p>
 				<div class="alert responseDanger" style="text-align:center;">
 					<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>

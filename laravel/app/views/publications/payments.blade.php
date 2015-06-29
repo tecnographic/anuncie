@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.main')
 @section('content')
 <div class="container contenedorUnico">
 	<div class="row">
@@ -28,7 +28,7 @@
 							números de cuentas, entidades bancarias y sucursales  en todo el territorio nacional le 
 							invitamos a pulsar sobre el ícono “CUENTAS Y ENTIDADES BANCARIAS”. Una vez 
 							hecho el depósito o transferencia bancaria debe enviarnos el número de transacción.
-							Recuerde que los datos del depositante y del titular de la cuenta en Ffasil.com. deben ser 
+							Recuerde que los datos del depositante y del titular de la cuenta en anuncie24.com. deben ser 
 							los mismos.
 							Si dentro de las 48 horas próximas no se ha confirmado la publicación del anuncio 
 							mediante el pago respectivo, este será eliminado de nuestra base de datos 

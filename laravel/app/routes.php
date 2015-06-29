@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@showFront');
+Route::get('/','HomeController@showIndex');
 Route::get('inicio','HomeController@showIndex');
 Route::get('inicio/login','AuthController@getLogin');
 Route::get('inicio/logout','AuthController@logOut');
@@ -60,7 +60,7 @@ Route::group(array('before' =>'auth'),function()
 	Route::get('usuario/publicacion/lider/fecha','UserController@getDate');
 	Route::post('usuario/publicacion/lider/enviar','UserController@postPublicationLider');
 	Route::get('usuario/publicacion/pagar/{id}','UserController@getPayments');
-	//normal	
+	//normal
 	//Route::get('usuario/publicar/habitual/{type}','PublicationController@getHabitualForm');
 
 	Route::get('usuario/publicacion/habitual','UserController@getPublicationNormal');
@@ -124,10 +124,9 @@ Route::group(array('before' =>'auth'),function()
 		Route::get('administrador/agregar-cuenta','AdministratorController@getAddAccount');
 		Route::post('administrador/agregar-cuenta/procesar','AdministratorController@postAddAccount');
 	});
-	
-	
+
+
 
 });
 
 //admin
-

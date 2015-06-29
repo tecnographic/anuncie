@@ -79,17 +79,17 @@ fieldset[disabled] .btn-success.active {
       </style>
    </head>
    <body style="font-family:'Roboto','san serif';padding:2em 4em;">
-      <img src="http://preview.ffasil.com/public/images/logo2.png" style="width:40%;">
+      <img src="http://preview.anuncie24.com/public/images/logo2.png" style="width:40%;">
       <div>
          <legend>Estimado usuario</legend>
          
-         <p class="bg-primary" style="padding:1em;">Este mensaje fue enviado por ffasil.com debido a la actualización de los datos personales.</p>
+         <p class="bg-primary" style="padding:1em;">Este mensaje fue enviado por anuncie24.com debido a la actualización de los datos personales.</p>
 
          <ul>
-            <li>Si usted no solicito la modificación de sus datos en <strong>ffasil.com</strong>, por favor contáctenos mediante nuestro portal.</li>
+            <li>Si usted no solicito la modificación de sus datos en <strong>anuncie24.com</strong>, por favor contáctenos mediante nuestro portal.</li>
             <li>Si tiene alguna duda o necesita más información. llámenos al teléfono (x)xxx-xxxx o escríbanos a los correos electrónicos <span class="bg-primary" style="padding:0px 0.5em;">123456789@hotmail.com</span> o <span class="bg-primary" style="padding:0px 0.5em;">123456789@hotmail.com</span> sera un placer atenderle</li>
          </ul>
-         <p  style="text-align:center;">Atentamente <span class="bg-primary" style="color:white;">ffasil.com</span></p>
+         <p  style="text-align:center;">Atentamente <span class="bg-primary" style="color:white;">anuncie24.com</span></p>
      </div>
    </body>
 </html>

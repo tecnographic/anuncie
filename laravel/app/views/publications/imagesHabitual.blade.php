@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.main')
 
 @section('content')
 {{ HTML::style('https://rawgit.com/enyo/dropzone/master/dist/dropzone.css') }}

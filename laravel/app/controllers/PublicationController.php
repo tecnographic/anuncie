@@ -6,7 +6,7 @@ class PublicationController extends BaseController {
 	{
 		return 'hola';
 		$url = 'usuario/publicacion/habitual/'.$type.'/enviar';
-		$title = "Publicacion Habitual / ".ucwords($type)." | ffasil.com";
+		$title = "Publicacion Habitual / ".ucwords($type)." | anuncie24.com";
 		$departamentos = Department::get();
 		$marcas = Marcas::get();
 		
@@ -172,7 +172,7 @@ class PublicationController extends BaseController {
 		->get(array('comentario.id','comentario.comentario','comentario.created_at','usuario.username'));
 
 		$resp = Respuestas::where('pub_id','=',$publication->id)->get();
-		$title = $publication->titulo." | ffasil.com";
+		$title = $publication->titulo." | anuncie24.com";
 		return View::make('publications.publicationSelf')
 		->with('title',$title)
 		->with('publication',$publication)
@@ -294,7 +294,7 @@ class PublicationController extends BaseController {
 	}
 	public function getMyComment()
 	{
-		$title = "Comentarios | ffasil.om";
+		$title = "Comentarios | anuncie24.om";
 		$hechos 	= Comentarios::join('publicaciones','publicaciones.id','=','comentario.pub_id')
 		->where('publicaciones.user_id','=',Auth::id())
 		->where('comentario.respondido','=',0)
@@ -321,7 +321,7 @@ class PublicationController extends BaseController {
 			Session::flash('error', 'Usted ha consumido el máximo de publicaciones casuales. Inténtelo nunevamente cuando su última publicación casual expire.');
 			return Redirect::to('usuario/publicar');
 		}
-		$title = "Publicación CASUAL | ffasil.com";
+		$title = "Publicación CASUAL | anuncie24.com";
 		$url = 'usuario/publicacion/casual/enviar';
 		$departamentos = Department::get();
 		$categorias = Categorias::where('tipo','=',1)->get();
@@ -338,7 +338,7 @@ class PublicationController extends BaseController {
 	}
 	public function getPublicationCategory($id)
 	{
-		$title = "Búsqueda por categorías | ffasil.com";
+		$title = "Búsqueda por categorías | anuncie24.com";
 		$lider = Publicaciones::where(function($query){
 			$query->where('ubicacion','=','Categoria')
 			->orWhere('ubicacion','=','Ambos');
@@ -367,7 +367,7 @@ class PublicationController extends BaseController {
 	}
 	public function getPublicationDepartment($id)
 	{
-		$title = "Búsqueda por departamento | ffasil.com";
+		$title = "Búsqueda por departamento | anuncie24.com";
 		if ($id != 'todos') {
 			
 			$publicaciones = Publicaciones::where('publicaciones.departamento','=',$id)
@@ -421,7 +421,7 @@ class PublicationController extends BaseController {
 		);
 		Mail::send('emails.respuesta', $data, function($message) use ($to_Email,$subject)
 		{
-			$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+			$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 		});
 		if ($resp->save()) {
 			
@@ -578,7 +578,7 @@ class PublicationController extends BaseController {
 	}
 	public function getPublicationNormalType($id)
 	{
-		$title = "Publicacion habitual | ffasil.com";
+		$title = "Publicacion habitual | anuncie24.com";
 		$subCat = SubCat::where('categoria_id','=',$id)
 		->where('deleted','=',0)
 		->get();
@@ -982,7 +982,7 @@ class PublicationController extends BaseController {
 	}
 	public function getPreview($id)
 	{
-		$title = "Previsualización de publicación HABITUAL | ffasil.com";
+		$title = "Previsualización de publicación HABITUAL | anuncie24.com";
 		$pub = Publicaciones::find($id);
 		if ($pub->categoria == 34) {
 			$pub = Publicaciones::join('marcas','marcas.id','=','publicaciones.marca_id')
@@ -1042,7 +1042,7 @@ class PublicationController extends BaseController {
 	{
 		$id = Input::get('modificar');
 		$pub = Publicaciones::find($id);
-		$title = "Modificar publicacion | ffasil.com";
+		$title = "Modificar publicacion | anuncie24.com";
 		if ($pub->tipo == 'Lider') {
 			$url = "usuario/publicacion/modificar/lider";
 		}elseif ($pub->tipo == 'Habitual') {
@@ -1289,7 +1289,7 @@ class PublicationController extends BaseController {
 			$to_Email = $user->email;
 			Mail::send('emails.elimPubUser', $data, function($message) use ($titulo,$to_Email,$subject)
 			{
-				$message->to($to_Email)->from('sistema@ffasil.com')->subject($subject);
+				$message->to($to_Email)->from('sistema@anuncie24.com')->subject($subject);
 			});
 
 			$pub->deleted = 1;

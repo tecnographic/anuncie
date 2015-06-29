@@ -14,106 +14,49 @@ class HomeController extends BaseController {
 	|	Route::get('/', 'HomeController@showWelcome');
 	|
 	*/
-	public function showFront()
-	{
-		$title = "ffasil.com el portal de comercio hecho por bolivianos para bolivianos";
-		return View::make('portada')->with('title',$title);
-	}
 	public function showIndex()
 	{
-		$title ="Inicio | ffasil.com";
-		$lider = Publicaciones::where('status','=','Aprobado')
-		->where('ubicacion','=','Principal')
-		->where('tipo','=','Lider')
-		->where('pag_web','!=',"")
-		->where('fechFin','>=',date('Y-m-d',time()))
-		->where('deleted','=',0)
-		->orderBy('fechFin','desc')->get();
+		$title ="Inicio | anuncie24.com";
 
-		$habitual = Publicaciones::where(function($query){
-			/*Busco las habituales*/
-			$query->where('tipo','=','Habitual')
-			->where(function($query){
-				/*Que vayan en la principal*/
-				$query->where('ubicacion','=','Principal')
-				->orWhere('ubicacion','=','Ambos')
-				->where('status','=','Aprobado');
-
-			})
-			->where(function($query){
-				/*y que sigan activas*/
-				$query->where('fechFin','>=',date('Y-m-d',time()))
-				->orWhere('fechFinNormal','>=',date('Y-m-d',time()))
-				->where('status','=','Aprobado');
-
-			});
-		})
-		->orWhere(function($query){
-			$query->where('tipo','=','Lider')
-			->where('ubicacion','=','Principal')
-			->where('pag_web','=',"")
-			->where('status','=','Aprobado');
-
-		})
-		->orderBy('fechFin','desc')->get();
-		/*->where('tipo','=','Habitual')
-		->where(function($query){
-			$query->where('ubicacion','=','Principal')
-			->orWhere('ubicacion','=','Ambos');
-		})
-		->where(function($query){
-			$query->where('fechFin','>=',date('Y-m-d',time()))
-			->orWhere('fechFinNormal','>=',date('Y-m-d',time()));
-		})
-		*/
-		
-		$casual = Publicaciones::where('tipo','=','Casual')
-		->where('fechFin','>=',date('Y-m-d',time()))
-		->where('status','=','Aprobado')
-		->where('deleted','=',0)
-		->get();
 		$categories = Categorias::where('deleted','=',0)->where('tipo','=',1)->get();
 		$servicios  = Categorias::where('deleted','=',0)->where('tipo','=',2)->get();
-		return View::make('index')
+		return View::make('home.index')
 		->with('title',$title)
-		->with('lider',$lider)
 		->with('categories',$categories)
-		->with('habitual',$habitual)
-		->with('casual',$casual)
 		->with('servicios',$servicios);
 	}
 	public function getContact()
 	{
 		$title ="Contáctenos";
-		return View::make('contactUs')->with('title',$title);
+		return View::make('home.contactUs')->with('title',$title);
 	}
 	public function getTermsAndConditions()
 	{
-		$title = "Términos y condiciones | ffasil.com";
-		return View::make('termsAndCond')->with('title',$title);
+		$title = "Términos y condiciones | anuncie24.com";
+		return View::make('home.termsAndCond')->with('title',$title);
 	}
 	public function getMision()
 	{
-		$title = "Misión y visión | ffasil.com";
-		return View::make('mision')
+		$title = "Misión y visión | anuncie24.com";
+		return View::make('home.mision')
 		->with('title',$title);
 	}
 	public function getPolitics()
 	{
-		$title = "Política de privacidad | ffasil.com";
-		return View::make('politics')
+		$title = "Política de privacidad | anuncie24.com";
+		return View::make('home.politics')
 		->with('title',$title);
 	}
 	public function getSearch()
 	{
 
 		$input = Input::all();
-		$title = "Búsqueda | ffasil.com";
-		
-		
-		$lider = DB::select("SELECT `publicaciones`.`id`,`publicaciones`.`img_1` 
-			FROM  `publicaciones` 
-			LEFT JOIN  `categoria` ON  `categoria`.`id` =  `publicaciones`.`categoria` 
+		$title = "Búsqueda | anuncie24.com";
+
+
+		$lider = DB::select("SELECT `publicaciones`.`id`,`publicaciones`.`img_1`
+			FROM  `publicaciones`
+			LEFT JOIN  `categoria` ON  `categoria`.`id` =  `publicaciones`.`categoria`
 			WHERE (
 			LOWER(  `publicaciones`.`titulo` ) LIKE  '%".strtolower($input['busq'])."%'
 			OR LOWER( `publicaciones`.`pag_web` ) LIKE  '%".strtolower($input['busq'])."%'
@@ -124,11 +67,11 @@ class HomeController extends BaseController {
 			AND  `publicaciones`.`status` =  'Aprobado'
 			AND  `publicaciones`.`deleted` =0");
 
-		$res =  DB::select("SELECT `publicaciones`.`id`,`publicaciones`.`img_1`,`publicaciones`.`titulo`,`publicaciones`.`precio`,`publicaciones`.`moneda` 
-			FROM  `publicaciones` 
+		$res =  DB::select("SELECT `publicaciones`.`id`,`publicaciones`.`img_1`,`publicaciones`.`titulo`,`publicaciones`.`precio`,`publicaciones`.`moneda`
+			FROM  `publicaciones`
 			LEFT JOIN  `categoria` ON `publicaciones`.`categoria` = `categoria`.`id`
-			LEFT JOIN  `departamento` ON  `publicaciones`.`departamento` =  `departamento`.`id`  
-			
+			LEFT JOIN  `departamento` ON  `publicaciones`.`departamento` =  `departamento`.`id`
+
 			WHERE (
 			LOWER(  `publicaciones`.`titulo` ) LIKE  '%".strtolower($input['busq'])."%'
 			OR LOWER( `departamento`.`nombre` ) LIKE  '%".strtolower($input['busq'])."%'
