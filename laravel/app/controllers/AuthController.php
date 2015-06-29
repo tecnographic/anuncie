@@ -17,14 +17,14 @@ class AuthController extends BaseController {
 
 	public function getLogin()
 	{
-		
+
 		$title = "Inicio de Sesión";
 		if (Auth::check())
         {
             return Redirect::to('inicio');
         }
 
-		return View::make('login')->with('title',$title);
+		return View::make('home.login')->with('title',$title);
 
 	}
 	public function postLogin()
@@ -54,7 +54,7 @@ class AuthController extends BaseController {
 			Session::flash('error', 'Usuario o contraseña incorrectos');
 			return Redirect::to('inicio/login');
 		}
-		
+
 	}
 	public function logOut()
 	{
@@ -64,8 +64,7 @@ class AuthController extends BaseController {
 	public function getRegister()
 	{
 		$title = 'Registro';
-		$departamentos = Department::all();
-		return View::make('register')->with('title',$title)->with('departamentos',$departamentos);
+		return View::make('home.register')->with('title',$title);
 	}
 	public function postRegister()
 	{
@@ -73,13 +72,8 @@ class AuthController extends BaseController {
 		$rules = array(
 			'username'   			 => 'required|min:4|unique:usuario',
 			'pass'      		 	 => 'required|min:6|confirmed',
-			'pass_confirmation'      => 'required',
-			'name'       			 => 'required|min:4',
-			'lastname'   			 => 'required|min:4',
+			'pass_confirmation'=> 'required',
 			'email'      			 => 'required|email|unique:usuario',
-			'id'         			 => 'required|min:5|unique:usuario',
-			'sexo'       			 => 'required|in:f,m',
-			'department' 			 => 'required',
 			'g-recaptcha-response'   => 'required'
 
 		);
@@ -94,12 +88,7 @@ class AuthController extends BaseController {
 			'username' 			=> 'EL nombre de usuario',
 			'pass'    	 		=> 'La contraseña',
 			'pass_confirmation' => 'la confirmacion de la contraseña',
-			'name'              => 'El nombre',
-			'lastname'          => 'El apellido',
 			'email' 			=> 'El email',
-			'id'				=> 'El carnet de identificacion',
-			'sexo'				=> 'El sexo',
-			'departament'  		=> 'El departamento',
 			'g-recaptcha-response'=> 'El captcha es obligatorio'
 		);
 		$validator = Validator::make($input, $rules, $messages,$custom);
@@ -111,17 +100,11 @@ class AuthController extends BaseController {
 		$user->username 	 = $input['username'];
 		$user->password    	 = Hash::make($input['pass']);
 		$user->email    	 = $input['email'];
-		$user->name     	 = $input['name'];
-		$user->lastname 	 = $input['lastname'];
-		$user->id_carnet	 = $input['id'];
-		$user->nombEmp	     = $input['empresa'];
-		$user->nit  		 = $input['nit'];
-		$user->state  		 = $input['department'];
 		$user->role          = 'Usuario';
-		
+
 		if ($user->save()) {
 			Session::flash('success', 'Registro completo, inicie sesión para disfrutar de nuestros servicios');
-			
+
 		}else
 		{
 			Session::flash('error','Error al crear el usuario, por favor contacte con el administrador del sitio o intente de nuevo');
@@ -129,7 +112,7 @@ class AuthController extends BaseController {
 
 		return Redirect::to('inicio/login');
 	}
-	
+
 	public function postEmailCheck()
 	{
 		if (Request::ajax()) {
@@ -143,17 +126,17 @@ class AuthController extends BaseController {
 				$cadena = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 			    //Obtenemos la longitud de la cadena de caracteres
 			    $longitudCadena=strlen($cadena);
-			     
+
 			    //Se define la variable que va a contener la contraseña
 			    $pass = "";
 			    //Se define la longitud de la contraseña, en mi caso 10, pero puedes poner la longitud que quieras
 			    $longitudPass=8;
-			    
+
 			    //Creamos la contraseña
 			    for($i=1 ; $i<=$longitudPass ; $i++){
 			        //Definimos numero aleatorio entre 0 y la longitud de la cadena de caracteres-1
 			        $pos=rand(0,$longitudCadena-1);
-			     
+
 			        //Vamos formando la contraseña en cada iteraccion del bucle, añadiendo a la cadena $pass la letra correspondiente a la posicion $pos en la cadena de caracteres definida.
 			        $pass .= substr($cadena,$pos,1);
 			    }
@@ -166,7 +149,7 @@ class AuthController extends BaseController {
 
 			  	if ($user[0]->save()) {
 			  		Mail::send('emails.passNew', $data, function ($message) use ($pass,$email){
-					    $message->subject('Correo de restablecimiento de contraseña ffasil.com');
+					    $message->subject('Correo de restablecimiento de contraseña anuncie24.com');
 					    $message->to($email);
 					});
 					return Response::json(array('type' => 'success','msg' => 'Se ha enviado un email con una clave provisional.'));
@@ -175,12 +158,12 @@ class AuthController extends BaseController {
 			  	{
 					return Response::json(array('type' => 'danger','msg' => 'Error, no se ha podido cambiar la contraseña, le agradecemos ponerse en contacto por medio de nuestro modulo de contacto.'));
 			  	}
-			    
+
 
 			}
-			
+
 		}
 	}
-	
+
 
 }

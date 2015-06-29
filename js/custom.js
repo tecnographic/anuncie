@@ -8,47 +8,41 @@ $(document).ready(function() {
 		}
 		var procede = 1;
 		$('.erroneo').remove();
-		if ($('#username').val().length<4) {
-			alerta('#username','El nombre de usuario debe ser más largo');
+		if ($('.username').val().length<4) {
+			alerta('.username','El nombre de usuario debe ser más largo');
 			procede = 0;
 		}
-		if ($('#pass').val() <6) {
-			alerta('#pass','La contraseña es muy corta');
+		if ($('.pass').val() <6) {
+			alerta('.pass','La contraseña es muy corta');
 			procede = 0;
 		}else{
-			if ($('#pass').val() != $('#pass2').val()) {
-				alerta('#pass2','Las contraseñas no coinciden');
+			if ($('.pass').val() != $('.pass2').val()) {
+				alerta('.pass2','Las contraseñas no coinciden');
 				procede = 0;
 			}
 		}
-		if ($('#email').val().indexOf('@') == -1 || $('#email').val().indexOf('.')== -1) {
-			alerta('#email','Debe introducir un email válido');
+		if ($('.email').val().indexOf('@') == -1 || $('.email').val().indexOf('.')== -1) {
+			alerta('.email','Debe introducir un email válido');
 			procede = 0;
 		}
-		if ($('#name').val().length<4) {
-			alerta('#name','El nombre es muy corto');
-			procede = 0;
-		}
-		if ($('#lastname').val().length<4) {
-			alerta('#lastname','El apellido es muy corto');
-			procede = 0;
-		}
-		if ($('#id').val()<4) {
-			alerta('#id','el número de identificación es muy corto');
-			procede = 0;
-		}
+		if (true) {
 
-		if ($('#sexo').val()=="") {
-			alerta('#sexo','Debe elegir un sexo');
-			procede = 0;
 		}
-		if ($('#department').val() == "") {
-			alerta('#department','Debe elegir un departamento');
-			procede = 0;
-		}
-		if (procede == 0) {
-			event.preventDefault();
+		if (procede == 1) {
+			$('.form-register').submit();
 		};
+	});
+	$('.form-control').blur(function(event) {
+		$(this).popover('hide')
+	});
+	$('.form-control').focus(function(event) {
+		$(this).css({
+			'box-shadow':'0px 0px 1px 1px transparent'
+		});
+		$(this).next('.erroneo').remove();
+	});
+	$('.btnWarningRegister').click(function(event) {
+		$('.form-control').val('');
 	});
 });
 
@@ -137,7 +131,7 @@ $(document).ready(function() {
 		boton.css({
 			'display': 'none'
 		});
-		
+
 		$('.cancel').click(function() {
 			$(this).remove();
 			boton.css({
@@ -147,7 +141,7 @@ $(document).ready(function() {
 				'display': 'block'
 			});
 		});
-		
+
 	});
 	$('.btn-eliminar').click(function(event) {
 		var x;
@@ -166,9 +160,9 @@ $(document).ready(function() {
 				{
 					console.log('error');
 				}
-			})			
+			})
 		}
-	});	
+	});
 });
 /*------------------ Modificar Perfil --------------*/
 
@@ -219,7 +213,7 @@ $(document).ready(function() {
 				event.preventDefault();
 			};
 		});
-		
+
 	});
 });
 
@@ -227,9 +221,9 @@ $(document).ready(function() {
 
 $('.continueNormal').click(function(event){
 	$('.info').animate({'opacity': 0},500, function(){
-			$(this).remove();	
+			$(this).remove();
 			$('.formPub').css({'display':'block','opacity':0}).animate({
-				
+
 				'opacity': 1
 			},
 				500
@@ -249,7 +243,7 @@ $('#veiMarca').change(function(){
 				for (var i = 0 ; i < response.length; i++) {
 					$('#veiModel').append('<option class="optionModel" value="'+response[i].id+'">'+response[i].nombre+'</option>');
 				};
-				
+
 			}
 		})
 	};
@@ -263,7 +257,7 @@ $(document).ready(function() {
 			valor = (parseInt(duration)*parseInt(valor))+40;
 			if ($(aquel).val() != "" && duration2 != "") {
 				valor += parseInt(parseInt(duration2)*parseInt($(aquel).val()));
-				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar sera de: '+valor+'bs</p>');	
+				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar sera de: '+valor+'bs</p>');
 			}else{
 				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar sera de: '+valor+'bs</p>');
 			}
@@ -272,10 +266,10 @@ $(document).ready(function() {
 			if ($(aquel).val() != "" && duration2 != "") {
 				console.log(valor+' '+typeof valor)
 				valor = parseInt(parseInt(duration2)*parseInt($(aquel).val()))+40;
-				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar es de: '+valor+'bs</p>');	
+				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar es de: '+valor+'bs</p>');
 			}else
 			{
-				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar es de: 40bs</p>');	
+				$('#enviarPago').before('<h3 id="totalTexto">El total a pagar es de: 40bs</p>');
 			}
 		}
 	}
@@ -297,8 +291,8 @@ $(document).ready(function() {
 			var duration2 = $('#categoriaDuration').val()
 			periodo(valor,'#categoriaPeriodo',duration,duration2);
 		}
-		
-		
+
+
 	});
 	$('#categoriaDuration').keyup(function(event) {
 		if ($('#categoriaPeriodo').val() != "") {
@@ -324,9 +318,9 @@ $(document).ready(function() {
 
 $('.continue').click(function(event) {
 	$('.info').animate({'opacity': 0},500, function(){
-			$(this).remove();	
+			$(this).remove();
 			$('.formPub').css({'display':'block','opacity':0}).animate({
-				
+
 				'opacity': 1
 			},
 				500
@@ -414,7 +408,7 @@ $('.continue').click(function(event) {
 				$('#fechIni').after('<div class="alert alert- errorBlur"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>Debe introducir una fecha</div>');
 			}
 		}
-		
+
 	});
 	$('#duration').blur(function(){
 		if ($('#fechIni').val()!="" && $('#period').val()!="") {
@@ -445,7 +439,7 @@ $('.continue').click(function(event) {
 				alerta('#category','Debe seleccionar una categoría');
 				procede = 0;
 			}
-		}	
+		}
 		if ($('#name').val().length < 4) {
 			alerta('#name','El nombre debe tener al menos 4 caracteres');
 			procede = 0;
@@ -517,7 +511,7 @@ $(document).ready(function() {
 				},
 				error:function(){
 					console.log('error');
-				}	
+				}
 			})
 		};
 
@@ -553,19 +547,19 @@ $(document).ready(function() {
 		var rand2 = Math.round(Math.random()*100);
 		$('.formula').html('Cuanto es: '+rand1+'+'+rand2).append('<input type="hidden" name="x" value="'+rand1+'">').append('<input type="hidden" name="y" value="'+rand2+'">')
 		$('.info').animate({'opacity': 0},500, function(){
-				$(this).remove();	
+				$(this).remove();
 				$('.formPub').css({'display':'block','opacity':0}).animate({
-					
+
 					'opacity': 1
 				},
 					500
 				);
-		});	
+		});
 		var total = 400;
 		var texto = $('.cke_wysiwyg_frame').contents().find('body').html();
 		texto2 = $(texto).text();
-		
-		
+
+
 		var actual = total - parseInt(texto2.length);
 		$('.cantCaracteres').html('Caracteres restantes: '+actual);
 		$('.cke_wysiwyg_frame').contents().keyup(function(event){
@@ -581,7 +575,7 @@ $(document).ready(function() {
 					$('.cantCaracteres').html('Caracteres restantes: '+0);
 					alert('Ha alcanzado el limite de caracteres.')
 				}
-				
+
 
 			};
 		})
@@ -591,7 +585,7 @@ $(document).ready(function() {
 	$('.btn-responder').click(function(event) {
 		var id = $(this).val();
 		var boton = $(this);
-		
+
 		$('.textoRespuesta').click(function(event) {
 			$('.responseDanger').css({'display':'none'})
 		});
@@ -606,7 +600,7 @@ $(document).ready(function() {
 		});
 		$('.close').click(function(event) {
 			$('.responseDanger').removeClass('alert-danger');
-			$('.responseDanger').removeClass('alert-success');	
+			$('.responseDanger').removeClass('alert-success');
 			$('.responseDanger').css({
 				'display': 'none',
 				'opacity': 0
@@ -640,7 +634,7 @@ $(document).ready(function() {
 					console.log('error');
 				}
 			})
-			
+
 		});
 	});
 });
@@ -670,7 +664,7 @@ jQuery(document).ready(function($) {
 						});
 				});
 			});
-			
+
 		});
 		$('body').css({
 			'overflow': 'hidden'
@@ -728,7 +722,7 @@ jQuery(document).ready(function($) {
 					console.log('error');
 				}
 			})
-			
+
 		});
 
 	});
@@ -746,7 +740,7 @@ $(document).ready(function() {
         var tableRowsClass = $('.table-list-search tbody tr');
         $('.search-sf').remove();
         tableRowsClass.each( function(i, val) {
-        
+
             //Lower text for case insensitive
             var rowText = $(val).text().toLowerCase();
             var inputText = $(that).val().toLowerCase();
@@ -766,7 +760,7 @@ $(document).ready(function() {
             {
                 //hide rows
                 tableRowsClass.eq(i).hide();
-                
+
             }
             else
             {
@@ -819,8 +813,8 @@ $('.btn-elim').click(function(event) {
 				boton.parent().parent().remove();
 			}
 		})
-		
-		
+
+
 	});
 });
 
@@ -865,7 +859,7 @@ $('.btn-elim-pub').click(function(event) {
 		$('.close').click(function(event) {
 			$('#eliminarPublicacionModal').prop('disabled',false)
 		});
-		
+
 	});
 });
 
@@ -899,7 +893,7 @@ jQuery(document).ready(function($) {
 							$(this).css({'display':'none'});
 					});
 					$('#neg').animate({
-						
+
 						'opacity': 0},
 						50, function() {
 							$(this).after('<img src="../images/loading.gif" style="width:25px;height:25px;display:inline-block;" class="loading">')
@@ -923,13 +917,13 @@ jQuery(document).ready(function($) {
 						}else
 						{
 							boton.parent().parent().remove();
-							
+
 						}
 					});
 				}
 			})
-			
-			
+
+
 		});
 	});
 });
@@ -942,7 +936,7 @@ jQuery(document).ready(function($) {
 			$('.sendPubValue').unbind('click');
 			var tipo = $(this).val();
 			var dataPost = {'tipo':tipo,'id':id};
-			
+
 			$.ajax({
 				url: 'valorar-comprador',
 				type: 'POST',
@@ -956,7 +950,7 @@ jQuery(document).ready(function($) {
 							$(this).css({'display':'none'});
 					});
 					$('#neg').animate({
-						
+
 						'opacity': 0},
 						50, function() {
 							$(this).after('<img src="../images/loading.gif" style="width:25px;height:25px;" class="loading">')
@@ -979,7 +973,7 @@ jQuery(document).ready(function($) {
 						}else
 						{
 							boton.parent().parent().remove();
-							
+
 						}
 					});
 				}
@@ -1002,7 +996,7 @@ jQuery(document).ready(function($) {
 					'opacity': 0
 				});
 			});
-			
+
 		});
 	});
 });
@@ -1041,7 +1035,7 @@ $('#category').change(function(event) {
 				for (var i = 0 ; i < response.length; i++) {
 					$('#subCat').append('<option class="optionModel" value="'+response[i].id+'">'+response[i].desc+'</option>');
 				};
-				
+
 			}
 		})
 	};
@@ -1091,8 +1085,8 @@ jQuery(document).ready(function($) {
 				}
 			}
 		})
-		
-		
+
+
 	}
 	setTimeout(function(){ verificarComentario(); }, 1);
 	setInterval(verificarComentario,300000)
